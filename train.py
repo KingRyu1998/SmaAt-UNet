@@ -30,7 +30,7 @@ parser.add_argument('--local_rank', type=int)
 args = parser.parse_args()
 
 # config
-random_seed = 1997
+random_seed = 1998
 np.random.seed(random_seed)
 torch.manual_seed(random_seed)
 if torch.cuda.device_count() > 1:
