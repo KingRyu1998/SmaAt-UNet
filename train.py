@@ -105,6 +105,7 @@ def train():
         for inputs, labels in tq_bar:
             inputs = inputs.cuda(args.local_rank)
             labels = labels.cuda(args.local_rank)
+            optimizer.zero_grad()
             preds = net(inputs)
             loss = loss_func(preds, labels)
             train_loss = loss.item() / batch_size
@@ -126,7 +127,6 @@ def train():
             for inputs, labels in tq_bar:
                 inputs = inputs.cuda(args.local_rank)
                 labels = labels.cuda(args.local_rank)
-                optimizer.zero_grad()
                 preds = net(inputs)
                 loss = loss_func(preds, labels)
                 val_loss = loss.item() / batch_size
